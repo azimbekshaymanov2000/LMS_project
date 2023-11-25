@@ -6,12 +6,17 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
+import uz.pdp.lms_project.admin.dto.Admin_StudentCreatedDto;
 import uz.pdp.lms_project.entity.lesson.entity.Lesson;
 import uz.pdp.lms_project.entity.lesson.repozitary.LessonRepozitary;
 import uz.pdp.lms_project.entity.sciences.entity.Sciences;
 import uz.pdp.lms_project.entity.sciences.repozitary.SciencesRepazitory;
+import uz.pdp.lms_project.entity.student.Student;
+import uz.pdp.lms_project.entity.student.controller.StudentRepazitory;
+import uz.pdp.lms_project.entity.student.controller.StudentService;
 import uz.pdp.lms_project.entity.teacher.TeacherRepazitory;
 
+import java.util.List;
 import java.util.UUID;
 
 @Controller
@@ -21,6 +26,7 @@ public class adminController {
     private final TeacherRepazitory repozitary;
     private final SciencesRepazitory sciencesRepazitory;
     private final LessonRepozitary lessonRepozitary;
+    private final StudentService studentService;
     static UUID uuid;
 
     @GetMapping
@@ -46,4 +52,17 @@ public class adminController {
         lessonRepozitary.save(lesson);
         return new ModelAndView("Time");
     }
+
+
+    @GetMapping("/add-tiacher")
+    public String createTiacher() {
+        return "add-tiacher";
+    }
+
+    @GetMapping("/lessonAdmin")
+    public ModelAndView back(Model model) {
+        return new ModelAndView("lessonAdmin", model.asMap());
+    }
+
+
 }

@@ -25,9 +25,12 @@ public class SecurityConfig {
                 .authorizeHttpRequests(
                         registry -> registry
                                 .requestMatchers("register/amaliyot","register/jadval","/TableOfDars","/register/loginParol",
-                                        "/lesson","/admin/{id}",
+                                        "/lesson", "/static/css/{id}",
                                         "/{id}","Admin","Time"
-                                        ,"/login", "/Sciences","/Dars","/register","/student")
+                                        ,"/login", "/Sciences","/Dars","/register","/student","student/add-student",
+                                        "student/all-student","/student/{id}","teacher/add-tiacher","teacher/all-teacher",
+                                        "/teacher/{id}","student/update{id}","teacher/update{id}","student/back",
+                                        "teacher/back")
                                 .permitAll()
                                 .requestMatchers("/car").hasAuthority("car:read")
                                 .anyRequest().authenticated()

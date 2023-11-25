@@ -45,7 +45,7 @@ public class LoginController {
         else if (byLogin==null ) {
             Admin byLogin1 = adminrepozitary.findByLogin(login);
             model.addAttribute(byLogin1);
-            return new ModelAndView("Admin",model.asMap());
+            return new ModelAndView("lessonAdmin",model.asMap());
         }
         return new ModelAndView("login");
     }

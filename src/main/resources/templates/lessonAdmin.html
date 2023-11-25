@@ -1,52 +1,123 @@
 <!DOCTYPE html>
-<html lang="en"  xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Admin</title>
+
 </head>
 <body>
 <style>
     body {
-        font-family: Arial, sans-serif;
+        background: url("https://thumbs.dreamstime.com/z/lesson-plan-business-team-hands-work-financial-reports-laptop-top-view-78174909.jpg?w=2048") no-repeat;
+        background-size: cover;
     }
+
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    .nav-content {
+        padding: 0 30%;
+        display: flex;
+        align-content: space-between;
+        align-items: center;
+        color: white;
+        background-color: #313131;
+
+    }
+
+    ul {
+        list-style: none;
+    }
+
+    a {
+        color: inherit;
+        text-decoration: none;
+    }
+
+    .nav-content ul {
+        display: flex;
+    }
+
+    .nav-content ul li {
+        margin: 0 60px;
+    }
+
+    .nav-content a:hover {
+        color: cyan;
+    }
+
+
+    body {
+        font-family: Arial, sans-serif;
+
+    }
+
     .tweet {
         border: 1px solid #ccc;
         padding: 10px;
         bottom-margin: 10px;
     }
+
     .author {
         font-weight: bold;
     }
+
     .timestamp {
         color: #888;
         font-size: 12px;
     }
+
     .content {
         margin-top: 10px;
     }
+
     button-long {
         width: 200px;
     }
 
 
 </style>
-<table aria-describedby="datatable_info" style="width: 1141px" border="100">
+
+<nav>
+    <div class="nav-content">
+        <a href="/">
+            <h1>ADMIN service</h1>
+        </a>
+        <ul>
+
+            <li><a href="/student/add-student" >Creat student</a></li>
+            <li><a href="/teacher/add-tiacher">Creat tiacher</a></li>
+            <li><a href="/student/all-student">Student list</a></li>
+            <li><a href="/teacher/all-teacher">Teacher list</a></li>
+        </ul>
+
+
+    </div>
+
+
+</nav>
+<table aria-describedby="datatable_info" style="width: 1141px">
     <thead>
     <th width="200">Fan</th>
-    <th >O'qituvchi</th>
+    <th>O'qituvchi</th>
     <th>Dars vaqtini kiritish</th>
     </thead>
 
     <tbody>
 
+
     <tr th:each="teachers:${teacherList}">
-           <td th:text="${teachers.getSciences().getName()}"></td>
-           <td th:text="${teachers.getFullname()}"></td>
-           <td>
-               <form th:action="@{/admin/{id}(id=${teachers.getSciences().getId()})}" th:method="POST">
-                   <button type="submit">Time</button>
-               </form>
-           </td>
+        <td th:text="${teachers.getSciences().getName()}"></td>
+        <td th:text="${teachers.getFullname()}"></td>
+        <td>
+            <form th:action="@{/admin/{id}(id=${teachers.getSciences().getId()})}" th:method="POST">
+                <button type="submit">Time</button>
+            </form>
+        </td>
     </tr>
     </tbody>
 </table>

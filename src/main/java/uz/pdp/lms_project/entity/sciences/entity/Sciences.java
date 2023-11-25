@@ -27,6 +27,7 @@ public class Sciences {
      @OneToMany(mappedBy = "sciences",fetch = FetchType.LAZY)
     private List<Teacher>teachers;
     @OneToMany(mappedBy = "sciences",fetch = FetchType.LAZY)
+
    private List<Lesson>lessons;
 
     public void setLessons(List<Lesson> lessons) {

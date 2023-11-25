@@ -8,4 +8,5 @@ import java.util.UUID;
 @Repository
 public interface TeacherRepazitory extends JpaRepository<Teacher, UUID> {
 
+
 }
